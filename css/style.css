@@ -1,0 +1,569 @@
+@-webkit-keyframes ani-shake {
+  50% {
+    -webkit-transform: translate3d(0, 5px, 0);
+    transform: translate3d(0, 5px, 0);
+  }
+}
+@keyframes ani-shake {
+  50% {
+    -webkit-transform: translate3d(0, 5px, 0);
+    transform: translate3d(0, 5px, 0);
+  }
+}
+@-webkit-keyframes ani-text {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes ani-text {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@-webkit-keyframes ani-parabola {
+  0% {
+    -webkit-transform: translate(0px, 0px) scale(1);
+    transform: translate(0px, 0px) scale(1);
+  }
+  10% {
+    -webkit-transform: translate(20%, -60%) scale(0.95);
+    transform: translate(20%, -60%) scale(0.95);
+  }
+  20% {
+    -webkit-transform: translate(40%, -100%) scale(0.9);
+    transform: translate(40%, -100%) scale(0.9);
+  }
+  30% {
+    -webkit-transform: translate(60%, -140%) scale(0.85);
+    transform: translate(60%, -140%) scale(0.85);
+  }
+  40% {
+    -webkit-transform: translate(80%, -165%) scale(0.8);
+    transform: translate(80%, -165%) scale(0.8);
+  }
+  50% {
+    -webkit-transform: translate(100%, -185%) scale(0.75);
+    transform: translate(100%, -185%) scale(0.75);
+  }
+  60% {
+    -webkit-transform: translate(120%, -190%) scale(0.7);
+    transform: translate(120%, -190%) scale(0.7);
+  }
+  70% {
+    -webkit-transform: translate(140%, -185%) scale(0.65);
+    transform: translate(140%, -185%) scale(0.65);
+  }
+  80% {
+    -webkit-transform: translate(160%, -180%) scale(0.6);
+    transform: translate(160%, -180%) scale(0.6);
+  }
+  90% {
+    -webkit-transform: translate(180%, -175%) scale(0.55);
+    transform: translate(180%, -175%) scale(0.55);
+  }
+  100% {
+    -webkit-transform: translate(200%, -160%) scale(0.5);
+    transform: translate(200%, -160%) scale(0.5);
+  }
+}
+@keyframes ani-parabola {
+  0% {
+    -webkit-transform: translate(0px, 0px) scale(1);
+    transform: translate(0px, 0px) scale(1);
+  }
+  10% {
+    -webkit-transform: translate(20%, -60%) scale(0.95);
+    transform: translate(20%, -60%) scale(0.95);
+  }
+  20% {
+    -webkit-transform: translate(40%, -100%) scale(0.9);
+    transform: translate(40%, -100%) scale(0.9);
+  }
+  30% {
+    -webkit-transform: translate(60%, -140%) scale(0.85);
+    transform: translate(60%, -140%) scale(0.85);
+  }
+  40% {
+    -webkit-transform: translate(80%, -165%) scale(0.8);
+    transform: translate(80%, -165%) scale(0.8);
+  }
+  50% {
+    -webkit-transform: translate(100%, -185%) scale(0.75);
+    transform: translate(100%, -185%) scale(0.75);
+  }
+  60% {
+    -webkit-transform: translate(120%, -190%) scale(0.7);
+    transform: translate(120%, -190%) scale(0.7);
+  }
+  70% {
+    -webkit-transform: translate(140%, -185%) scale(0.65);
+    transform: translate(140%, -185%) scale(0.65);
+  }
+  80% {
+    -webkit-transform: translate(160%, -180%) scale(0.6);
+    transform: translate(160%, -180%) scale(0.6);
+  }
+  90% {
+    -webkit-transform: translate(180%, -175%) scale(0.55);
+    transform: translate(180%, -175%) scale(0.55);
+  }
+  100% {
+    -webkit-transform: translate(200%, -160%) scale(0.5);
+    transform: translate(200%, -160%) scale(0.5);
+  }
+}
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 62.5%;
+  text-align: center;
+  overflow: hidden;
+}
+img {
+  max-width: 100%;
+}
+.hide {
+  display: none;
+}
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+.bg {
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  background-size: 100% auto;
+}
+.bg-v {
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: auto 100%;
+}
+.loading {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+}
+.loading.anim .loading-up {
+  top: -50%;
+}
+.loading.anim .loading-down {
+  top: 100%;
+}
+.loading .loading-up {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #d11a1a;
+  background-image: url(../images/loading_up.png);
+  background-position: 0 100%;
+  background-size: 100%;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+}
+.loading .loading-down {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  background-image: url(../images/loading_down.png);
+  background-position: 0 0;
+  background-size: 100%;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+}
+.loading .loading-text {
+  padding-top: 60px;
+  font-size: 1.6rem;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: url(../images/bg.png) no-repeat 0 100%;
+  background-size: 100% auto;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+}
+.wrapper.active {
+  opacity: 1;
+}
+.wrapper .logo {
+  margin: 2%;
+  height: 30px;
+  background-image: url(../images/logo.png);
+  background-position: 0 0;
+}
+.wrapper .title {
+  margin: 4% 7%;
+  height: 13px;
+  background-image: url(../images/title.png);
+  background-position: 0 0;
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .wrapper .title {
+    /* 兼容iphone5s */
+    margin-left: 9%;
+  }
+}
+.wrapper .handle {
+  height: 102px;
+  background-image: url(../images/handle.png);
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .wrapper .handle {
+    /* 兼容iphone5s */
+    height: 82px;
+  }
+}
+.wrapper .handle .handle-tips {
+  height: 26.5px;
+  background-image: url(../images/handle_tips.png);
+  opacity: 0;
+}
+.wrapper .handle .handle-tips.active {
+  opacity: 1;
+}
+.wrapper .handle .btn-left {
+  top: 30%;
+  left: 6%;
+  width: 35px;
+  height: 38px;
+}
+@media (min-device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  .wrapper .handle .btn-left {
+    /* 兼容iphone6plus */
+    left: 10%;
+    width: 40px;
+    height: 40px;
+  }
+}
+.wrapper .handle .btn-right {
+  top: 30%;
+  left: 22%;
+  width: 35px;
+  height: 38px;
+}
+@media (min-device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  .wrapper .handle .btn-right {
+    /* 兼容iphone6plus */
+    left: 25%;
+    width: 40px;
+    height: 40px;
+  }
+}
+.wrapper .handle .btn-a {
+  top: 36%;
+  right: 21%;
+  width: 50px;
+  height: 50px;
+}
+.wrapper .arrow {
+  right: 10px;
+  bottom: 15px;
+  width: 11px;
+  height: 10px;
+  background-image: url(../images/triangle.png);
+  -webkit-animation: ani-shake 1s linear infinite;
+  animation: ani-shake 1s linear infinite;
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .wrapper .arrow {
+    /* 兼容iphone5s */
+    right: 8px;
+  }
+}
+@media (min-device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  .wrapper .arrow {
+    /* 兼容iphone6plus */
+    right: 12px;
+  }
+}
+.container {
+  height: 380px;
+}
+.container:before,
+.container:after {
+  content: " ";
+  display: table;
+}
+.container:after {
+  clear: both;
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    /* 兼容iphone5s */
+    height: 310px;
+  }
+}
+@media (min-device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    /* 兼容iphone6plus */
+    height: 412px;
+  }
+}
+.container .screen {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/screen.png);
+}
+.container .tree {
+  margin: 1% 0;
+  width: 100%;
+  height: 98%;
+  background-image: url(../images/bg_tree.png);
+}
+.page {
+  position: absolute;
+  top: 7%;
+  left: 16%;
+  width: 68%;
+  height: 86%;
+  opacity: 0;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .page {
+    /* 兼容iphone5s */
+    left: 18%;
+    width: 64%;
+  }
+}
+@media (min-device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
+  .page {
+    /* 兼容iphone6plus */
+    left: 17%;
+    width: 66%;
+  }
+}
+.page.active {
+  opacity: 1;
+}
+.page .text {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  background-position: 50% 100%;
+}
+.page .text1 {
+  background-image: url(../images/text1.png);
+}
+.page .text2 {
+  background-image: url(../images/text2.png);
+}
+.page .text3 {
+  background-image: url(../images/text3.png);
+}
+.page .text4 {
+  background-image: url(../images/text4.png);
+}
+.page .text5 {
+  background-image: url(../images/text5.png);
+}
+.page .text6 {
+  background-image: url(../images/text6.png);
+}
+.page1 .pokemon,
+.page2 .pokemon,
+.page3 .pokemon,
+.page6 .pokemon,
+.page7 .pokemon {
+  top: 18%;
+  width: 100%;
+  height: 130px;
+  background-image: url(../images/pokemon.png);
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .page1 .pokemon,
+  .page2 .pokemon,
+  .page3 .pokemon,
+  .page6 .pokemon,
+  .page7 .pokemon {
+    /* 兼容iphone5s */
+    height: 110px;
+  }
+}
+.page4 .girl {
+  top: 6%;
+  left: 0;
+  width: 100%;
+  height: 94%;
+  background-position: 90% 0;
+  opacity: 0;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+}
+.page4 .girl.active {
+  opacity: 1;
+}
+.page4 .girl1 {
+  background-image: url(../images/girl1.png);
+}
+.page4 .girl2 {
+  background-image: url(../images/girl2.png);
+}
+.page4 .girl3 {
+  background-image: url(../images/girl3.png);
+  background-position: 80% 0;
+}
+.page4 .pokemon {
+  left: 3%;
+  bottom: 2%;
+  width: 22%;
+  height: 100px;
+  background-image: url(../images/pokemon.png);
+  background-position: 50% 100%;
+}
+.page4 .pokemon.parabola {
+  -webkit-animation: ani-parabola 1s linear forwards;
+  animation: ani-parabola 1s linear forwards;
+}
+.page4 .text4 {
+  left: 27%;
+  width: 73%;
+}
+.page5 .girl-attr,
+.page5 .attr-info {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: 0 0;
+}
+.page5 .girl-attr {
+  opacity: 0;
+}
+.page5 .girl-attr.active {
+  opacity: 1;
+}
+.page5 .attr-info {
+  left: 3%;
+  width: 94%;
+  background-position: 0 95%;
+}
+.page5 .girl-attr1 {
+  background-image: url(../images/girl_attr1.jpg);
+}
+.page5 .girl-attr2 {
+  background-image: url(../images/girl_attr2.jpg);
+}
+.page5 .girl-attr3 {
+  background-image: url(../images/girl_attr3.jpg);
+}
+.page5 .attr-info1 {
+  background-image: url(../images/attr_info1.png);
+}
+.page5 .attr-info2 {
+  background-image: url(../images/attr_info1.png);
+}
+.page5 .attr-info3 {
+  background-image: url(../images/attr_info1.png);
+}
+.page7 .logo2 {
+  top: 4%;
+  width: 100%;
+  height: 60px;
+  background-image: url(../images/logo.png);
+}
+.page7 .pokemon {
+  top: 27%;
+}
+@media (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .page7 .pokemon {
+    /* 兼容iphone5s */
+    top: 30%;
+  }
+}
+.video-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+}
+.video-wrap.active {
+  opacity: 1;
+}
+.video-wrap .video {
+  width: 100%;
+}
+.video-wrap .close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 3rem;
+  color: #fff;
+}
+.lnk-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  opacity: 0;
+}
+.cur .frame-end {
+  background-image: url(../images/sprites1.jpg);
+  background-size: 1500%;
+  -webkit-animation: ani-boot1 1s steps(15) forwards;
+  animation: ani-boot1 1s steps(15) forwards;
+}
+.cur .frame-end.loop {
+  background-image: url(../images/sprites2.jpg);
+  background-size: 1600%;
+  -webkit-animation: ani-boot2 1.5s steps(16) infinite;
+  animation: ani-boot2 1.5s steps(16) infinite;
+}
+.cur .text div {
+  -webkit-animation: ani-text 1s ease forwards;
+  animation: ani-text 1s ease forwards;
+}
+.music {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 99999;
+  width: 24px;
+  height: 18px;
+  background: url(../images/mute.png) no-repeat 0 0;
+  background-size: auto 100%;
+}
+.music.playing {
+  background-image: url(../images/volume.png);
+}

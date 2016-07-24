@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="author" content="erictian">
+  <meta name="description" content="YY LIVE萌舞娘捕捉大赏，Gotcha！！">
+  <title>YY LIVE萌舞娘捕捉大赏，Gotcha！！</title>
+  <!-- build:css css/style.css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endbuild -->
+</head>
+
+<body>
+  <div id="loading" class="loading pa">
+    <div class="loading-up pa bg"></div>
+    <div class="loading-down pa bg">
+      <div id="load_text" class="loading-text">loading... 0%</div>
+    </div>
+  </div>
+  <div id="wrapper" class="wrapper pr"></div>
+  <div id="video_wrap" class="video-wrap hide">
+    <video id="video" class="video" src=""></video>
+    <div class="close">&times;</div>
+  </div>
+  <a id="lnk_layer" class="lnk-layer hide" href="http://www.yy.com/c/cj/index.htm" target="_blank"></a>
+  <script id="tpl" type="text/html">
+    <div class="logo bg-v"></div>
+    <div class="container pr">
+      <div class="tree pa bg-v"></div>
+      <div class="screen pa bg-v"></div>
+      <section class="page page1 hide" data-page="1">
+        <div class="text text1 pa bg">
+          <div class="arrow pa bg-v"></div>
+        </div>
+      </section>
+      <section class="page page2 hide" data-page="2">
+        <div class="pokemon pa bg-v"></div>
+        <div class="text text2 pa bg">
+          <div class="arrow pa bg-v"></div>
+        </div>
+      </section>
+      <section class="page page3 hide" data-page="3">
+        <div class="pokemon pa bg-v"></div>
+        <div class="text text3 pa bg">
+          <div class="arrow pa bg-v"></div>
+        </div>
+      </section>
+      <section class="page page4 hide" data-page="4">
+        <div class="girl girl1 pa bg-v active" data-girl="1"></div>
+        <div class="girl girl2 pa bg-v" data-girl="2"></div>
+        <div class="girl girl3 pa bg-v" data-girl="3"></div>
+        <div class="pokemon pa bg"></div>
+        <div class="text text4 pa bg">
+          <div class="arrow pa bg-v"></div>
+        </div>
+      </section>
+      <section class="page page5 hide" data-page="5">
+        <div class="girl-attr girl-attr1 bg-v pa">
+          <div class="attr-info attr-info1 bg pa"></div>
+        </div>
+        <div class="girl-attr girl-attr2 bg-v pa">
+          <div class="attr-info attr-info2 bg pa"></div>
+        </div>
+        <div class="girl-attr girl-attr3 bg-v pa">
+          <div class="attr-info attr-info3 bg pa"></div>
+        </div>
+      </section>
+      <section class="page page6 hide" data-page="6">
+        <div class="pokemon pa bg-v"></div>
+        <div class="text text5 pa bg">
+          <div class="arrow pa bg-v"></div>
+        </div>
+      </section>
+      <section class="page page7 hide" data-page="7">
+        <div class="logo2 bg-v pa"></div>
+        <div class="pokemon pa bg-v"></div>
+        <div class="text text6 pa bg">
+          <div class="arrow pa bg-v"></div>
+        </div>
+      </section>
+    </div>
+    <div class="title bg-v"></div>
+    <div class="handle pr bg-v">
+      <div class="handle-tips bg-v"></div>
+      <div class="btn-left pa"></div>
+      <div class="btn-right pa"></div>
+      <div class="btn-a pa"></div>
+    </div>
+  </script>
+  <!-- build:zeptojs js/zepto.js -->
+  <script src="js/zepto/zepto.js"></script>
+  <script src="js/zepto/ajax.js"></script>
+  <script src="js/zepto/event.js"></script>
+  <!-- endbuild -->
+  <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <!-- build:js js/index.js -->
+  <script src="js/motion.js"></script>
+  <script src="js/index.js"></script>
+  <!-- endbuild -->
+  <script>
+  $(function() {
+    // 分享参数
+    var SHARE_OBJ = {
+      title: 'YY LIVE萌舞娘捕捉大赏，Gotcha！！',
+      desc: '玩YY LIVE，抓萌妹纸！7月28-30日每天10点准时开启大乱斗。ChinaJoy舞道馆，直播给你好看！',
+      link: location.href,
+      imgUrl: 'http://www.phboy.com/china-joy/images/thumbnail.jpg',
+      success: function() {}
+    };
+
+    $.ajax({
+      url: 'http://h5.skyfish.me/weixin/wxjs.php',
+      data: {
+        'url': location.href,
+        'type': 'jsonp'
+      },
+      dataType: 'jsonp',
+      success: function(data) {
+        wx.config({
+          appId: data.appId,
+          timestamp: data.timestamp,
+          nonceStr: data.nonceStr,
+          signature: data.signature,
+          jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'
+          ]
+        });
+        wx.ready(function() {
+          // 分享到朋友圈
+          wx.onMenuShareTimeline(SHARE_OBJ);
+          // 分享给朋友
+          wx.onMenuShareAppMessage(SHARE_OBJ);
+          // 分享到QQ
+          wx.onMenuShareQQ(SHARE_OBJ);
+          // 分享到腾讯微博
+          wx.onMenuShareWeibo(SHARE_OBJ);
+          // 分享到QQ空间
+          wx.onMenuShareQZone(SHARE_OBJ);
+        });
+      }
+    });
+  });
+  </script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement('script');
+    hm.src = '//hm.baidu.com/hm.js?ddec433b11607be3a27563e3b4d41877';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+
+</html>
